@@ -19,6 +19,7 @@ def main():
     m = df['Date'].dt.month
     df2['Date'] = df.groupby([y, m])['Date'].agg('max') #find last date of each group
     df2['Count_m'] = df.groupby([y, m])['Date'].agg('count') #count number of rows in each group
+    df2 = df2.rename_axis(['year', 'month']) #fix ambigous error in newer version of pandas/python 
     #print(df2)
 
     #merge two dataframe to create the final dataframe
@@ -31,5 +32,3 @@ def main():
     print()
 
 main()
-
-
